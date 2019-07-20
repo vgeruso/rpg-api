@@ -12,6 +12,9 @@ app.use(express.json())
 // Initialization of the DB
 require('./config/database.js')
 requireDir('./src/models/game')
+requireDir('./src/models/attributes')
+requireDir('./src/models/items')
+requireDir('./src/models/roles')
 
 // Routes
 app.use('/api', require('./src/routes'))

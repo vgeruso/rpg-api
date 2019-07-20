@@ -6,7 +6,6 @@
 
 // Initialization of the Schema for the criation of model
 const ClassSchema = new mongoose.Schema({
-    // TODO Create the properties of Model
     name: {
         type: String,
         require: true
