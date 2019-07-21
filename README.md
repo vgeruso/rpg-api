@@ -13,13 +13,7 @@ Api para o game de RPG para plataformas web e mobile
 Clone o repositorio no seu local de trabalho
 
 ```bash
-$ git clone git@github.com:VictorGeruso/rpg-api.git
-```
-
-ou
-
-```bash
-$ git clone https://github.com/VictorGeruso/rpg-api.git
+$ git clone https://github.com/table-rpg/rpg-api.git
 ```
 
 ou faça o download do zip clicando no botão verde com a descrição 'clone or download' e na aba clique no botão 'Download zip'
