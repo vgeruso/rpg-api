@@ -13,7 +13,7 @@ const ConstituitionSchema = new mongoose.Schema({
     value: {
         type: Number
     },
-    adjustiment: {
+    adjustment: {
         type: Number
     },
     chanceResurrection: {

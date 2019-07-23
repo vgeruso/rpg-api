@@ -14,9 +14,14 @@ const IntelligenceController = require('./controllers/attributes/IntelligenceCon
 const StrenghtController = require('./controllers/attributes/StrengthController')
 const WisdomController = require('./controllers/attributes/WisdomController')
 
-// TODO Controllers items
+// Controllers items
+const EquipmentController = require('./controllers/items/EquipmentController')
+const SpellController = require('./controllers/items/SpellController')
+const WeaponController =  require('./controllers/items/WeaponController')
 
-//TODO Controllers roles
+// Controllers roles
+const BreedController = require('./controllers/roles/BreedController')
+const ClassController = require('./controllers/roles/ClassController')
 
 // Routes User
 routes.get('/users', UserController.index)
@@ -29,33 +34,58 @@ routes.delete('/users/:id', UserController.destroy)
 routes.post('/characters', CharacterController.store)
 
 // Routes Charisma
-routes.get('/Charismas', CharismaController.index)
-routes.get('/Charismas/:id', CharismaController.show)
-routes.post('/Charismas', CharismaController.store)
+routes.get('/charisma', CharismaController.index)
+routes.get('/charisma/:id', CharismaController.show)
+routes.post('/charisma', CharismaController.store)
 
 // Routes Constituition
-routes.get('/Constituition', ConstituitionController.index)
-routes.get('/Constituition/:id', ConstituitionController.show)
-routes.post('/Constituition', ConstituitionController.store)
+routes.get('/constituition', ConstituitionController.index)
+routes.get('/constituition/:id', ConstituitionController.show)
+routes.post('/constituition', ConstituitionController.store)
 
 // Routes Dexterity
-routes.get('/Dexterity', DexterityController.index)
-routes.get('/Dexterity/:id', DexterityController.show)
-routes.post('/Dexterity', DexterityController.store)
+routes.get('/dexterity', DexterityController.index)
+routes.get('/dexterity/:id', DexterityController.show)
+routes.post('/dexterity', DexterityController.store)
 
 // Routes Intelligence
-routes.get('/Intelligence', IntelligenceController.index)
-routes.get('/Intelligence/:id', IntelligenceController.show)
-routes.post('/Intelligence', IntelligenceController.store)
+routes.get('/intelligence', IntelligenceController.index)
+routes.get('/intelligence/:id', IntelligenceController.show)
+routes.post('/intelligence', IntelligenceController.store)
 
 // Routes Strenght
-routes.get('/Strength', StrenghtController.index)
-routes.get('/Strength/:id', StrenghtController.show)
-routes.post('/Strength', StrenghtController.store)
+routes.get('/strength', StrenghtController.index)
+routes.get('/strength/:id', StrenghtController.show)
+routes.post('/strength', StrenghtController.store)
 
 // Routes Wisdom
-routes.get('/Wisdom', WisdomController.index)
-routes.get('/Wisdom/:id', WisdomController.show)
-routes.post('/Wisdom', WisdomController.store)
+routes.get('/wisdom', WisdomController.index)
+routes.get('/wisdom/:id', WisdomController.show)
+routes.post('/wisdom', WisdomController.store)
+
+// Routes Equipment
+routes.get('/equipments', EquipmentController.index)
+routes.get('/equipments/:id', EquipmentController.show)
+routes.post('/equipments', EquipmentController.store)
+
+// Routes Spell
+routes.get('/spells', SpellController.index)
+routes.get('/spells/:id', SpellController.show)
+routes.post('/spells', SpellController.store)
+
+// Routes Weapon
+routes.get('/weapons', WeaponController.index)
+routes.get('/weapons/:id', WeaponController.show)
+routes.post('/weapons', WeaponController.store)
+
+// Routes Breed
+routes.get('/breeds', BreedController.index)
+routes.get('/breeds/:id', BreedController.show)
+routes.post('/breeds', BreedController.store)
+
+// Routes Class
+routes.get('/classes', ClassController.index)
+routes.get('/classes/:id', ClassController.show)
+routes.post('/classes', ClassController.store)
 
 module.exports = routes
