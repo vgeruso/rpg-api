@@ -9,7 +9,7 @@
   "scripts": {
     "start": "node .",
     "dev": "nodemon .",
-    "setup": "cd scripts/ && bash setup.sh"
+    "setup": "cd db/scripts/ && bash setup.sh"
   },
   "dependencies": {
     "body-parse": "^0.1.0",

@@ -62,3 +62,6 @@ typings/
 
 # DB config diretory
 config/
+
+# Xls Dyretory
+xls/
