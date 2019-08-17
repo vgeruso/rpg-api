@@ -17,5 +17,13 @@ module.exports = {
         //const Character = await Character.create()
 
         return res.json(CharacterData);
+    },
+
+    async update(req, res) {
+        // TODO create the proccess of update a Character
+    },
+
+    async destroy(req, res) {
+        // TODO create the proccess of delet a Character
     }
 };
