@@ -1,6 +1,6 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
-const Spell = mongoose.model('Spell')
+const Spell = mongoose.model('Spell');
 
 module.exports = {
     async index(req, res) {
@@ -12,7 +12,7 @@ module.exports = {
     },
 
     async store(req, res) {
-        const spell = await Spell.create(req.body)
-        return res.json(spell)
+        const spell = await Spell.create(req.body);
+        return res.json(spell);
     }
-}
+};

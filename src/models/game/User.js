@@ -2,8 +2,8 @@
  * This is the model for the storage in "User" collection in MongoDB.
  * @author Victor Geruso
  */
-const mongoose = require('mongoose') // Require for the dependecy of mongoose
-const ObjectId = mongoose.Schema.Types.ObjectId // Storage the data type ObjectId a constant
+const mongoose = require('mongoose'); // Require for the dependecy of mongoose
+const ObjectId = mongoose.Schema.Types.ObjectId; // Storage the data type ObjectId a constant
 
 // Initialization of the Schema for the criation of model
 const UserSchema = new mongoose.Schema({
@@ -29,7 +29,7 @@ const UserSchema = new mongoose.Schema({
             ref: 'Character'
         }
     ]
-})
+});
 
 // Creation of the model
-mongoose.model('User', UserSchema)
+mongoose.model('User', UserSchema);

@@ -9,6 +9,7 @@
   "scripts": {
     "start": "node .",
     "dev": "nodemon .",
+    "test": "jest",
     "setup": "cd db/scripts/ && bash setup.sh"
   },
   "dependencies": {
@@ -18,6 +19,8 @@
     "require-dir": "^1.2.0"
   },
   "devDependencies": {
-    "nodemon": "^1.19.1"
+    "jest": "^24.9.0",
+    "nodemon": "^1.19.1",
+    "supertest": "^4.0.2"
   }
 }

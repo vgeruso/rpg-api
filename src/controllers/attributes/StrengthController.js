@@ -1,6 +1,6 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
-const Strength = mongoose.model('Strength')
+const Strength = mongoose.model('Strength');
 
 module.exports = {
     async index(req, res) {
@@ -12,7 +12,7 @@ module.exports = {
     },
 
     async store(req, res) {
-        const strength = await Strength.create(req.body)
-        return res.json(strength)
+        const strength = await Strength.create(req.body);
+        return res.json(strength);
     }
-}
+};

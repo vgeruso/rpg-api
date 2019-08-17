@@ -1,6 +1,6 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
-const Wisdom = mongoose.model('Wisdom')
+const Wisdom = mongoose.model('Wisdom');
 
 module.exports = {
     async index(req, res) {
@@ -12,7 +12,7 @@ module.exports = {
     },
 
     async store(req, res) {
-        const wisdom = await Wisdom.create(req.body)
-        return res.json(wisdom)
+        const wisdom = await Wisdom.create(req.body);
+        return res.json(wisdom);
     }
-}
+};

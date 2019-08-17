@@ -1,6 +1,6 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
-const ClassModel = mongoose.model('Class')
+const ClassModel = mongoose.model('Class');
 
 module.exports = {
     async index(req, res) {
@@ -12,7 +12,7 @@ module.exports = {
     },
 
     async store(req, res) {
-        const classJson = await ClassModel.create(req.body)
-        return res.json(classJson)
+        const classJson = await ClassModel.create(req.body);
+        return res.json(classJson);
     }
-}
+};

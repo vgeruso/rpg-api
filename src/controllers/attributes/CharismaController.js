@@ -1,6 +1,6 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
-const Charisma = mongoose.model('Charisma')
+const Charisma = mongoose.model('Charisma');
 
 module.exports = {
     async index(req, res) {
@@ -12,7 +12,7 @@ module.exports = {
     },
 
     async store(req, res) {
-        const charisma = await Charisma.create(req.body)
-        return res.json(charisma)
+        const charisma = await Charisma.create(req.body);
+        return res.json(charisma);
     }
-}
+};
