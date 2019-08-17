@@ -1,21 +1,25 @@
-// Porta do servidor
-const port = 3000
+// Port of server
+const port = 3000;
 
-// Dependencias
-const express = require('express')
+// Dependencies
+const express = require('express');
+const requireDir = require('require-dir');
 
-// Inicialização do app
-const app = express()
+// Initialization of the app
+const app = express();
+app.use(express.json());
 
-// Conexão com o banco de dados
-require('./config/database.js')
+// Initialization of the DB
+require('./config/database.js');
+requireDir('./src/models/game');
+requireDir('./src/models/attributes');
+requireDir('./src/models/items');
+requireDir('./src/models/roles');
 
-// Inicialização da rota principal
-app.get('/', (req, res) => {
-    res.send('Olá RPG!')
-})
+// Routes
+app.use('/api', require('./src/routes'));
 
-// Inicialização do servidor na porta 3000
+// Initialization of the server in port 3000
 app.listen(port, () => {
-    console.log('Servidor da API inicializado')
-})
+    console.log('Server of the API initialized');
+});
