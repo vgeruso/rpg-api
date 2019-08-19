@@ -2,8 +2,8 @@
  * This is the model for the storage in "Character" collection in MongoDB.
  * @author Victor Geruso
  */
-const mongoose = require('mongoose') // Require for the dependency of mongoose
-const ObjectId = mongoose.Schema.Types.ObjectId // Storage the data type ObjectId in a constant
+const mongoose = require('mongoose'); // Require for the dependency of mongoose
+const ObjectId = mongoose.Schema.Types.ObjectId; // Storage the data type ObjectId in a constant
 
 // Initialization of the Schema for the criation of model
 const CharacterSchema = new mongoose.Schema({
@@ -259,7 +259,7 @@ const CharacterSchema = new mongoose.Schema({
             ref: 'Weapons'
         }
     ]
-})
+});
 
 // Creation of the model
-mongoose.model('Character', CharacterSchema)
+mongoose.model('Character', CharacterSchema);

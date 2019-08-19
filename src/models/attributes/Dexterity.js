@@ -2,7 +2,7 @@
  * This is the model for the storage in "Dexterity" Collection in MongoDB.
  * @author Victor Geruso
  */
-const mongoose = require('mongoose') // Require for the dependecy of mongoose
+const mongoose = require('mongoose'); // Require for the dependecy of mongoose
 
 // Initialization of the Schema for the criation of model
 const DexteritySchema = new mongoose.Schema({
@@ -25,7 +25,7 @@ const DexteritySchema = new mongoose.Schema({
     hideShadowPut: {
         type: Number
     }
-})
+});
 
 // Creation of the model
-mongoose.model('Dexterity', DexteritySchema)
+mongoose.model('Dexterity', DexteritySchema);

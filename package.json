@@ -2,14 +2,15 @@
   "name": "rpg-api",
   "version": "1.0.0",
   "description": "Api for the game RPG for platform web and mobile",
-  "main": "index.js",
+  "main": "server.js",
   "repository": "git@github.com:table-rpg/rpg-api.git",
   "author": "VictorGeruso <victor.geruso@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node .",
-    "dev": "nodemon .",
-    "setup": "cd db/scripts/ && bash setup.sh"
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "setup": "cd src/db/scripts/ && bash setup.sh",
+    "test": ""
   },
   "dependencies": {
     "body-parse": "^0.1.0",
