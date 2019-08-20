@@ -1,9 +1,18 @@
 const express = require('express');
 const requireDir = require('require-dir');
+const dotEnv = require('dotenv');
+
+dotEnv.config({
+    path: process.env.NODE_ENV === "test" ? ".env.test" : ".env"
+});
+
 
 class AppController {
     constructor() {
         this.express = express();
+
+        this.middleware();
+        this.route();
     }
 
     middleware() {
