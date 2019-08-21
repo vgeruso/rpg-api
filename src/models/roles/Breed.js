@@ -10,25 +10,32 @@ const BreedSchema = new mongoose.Schema({
         type: String,
         require: true
     },
+
     Adjustment: {
         type: Number,
         require: true
     },
+
     bonus: {
         type: Number
     },
+
     penality: {
         type: Number
     },
+
     lifeData: {
         type: String
     },
+
     movimentation: {
         type: Number
     },
+
     vision: {
         type: String
     },
+    
     language: {
         type: String
     }
