@@ -11,17 +11,22 @@ const BreedSchema = new mongoose.Schema({
         require: true
     },
 
-    Adjustment: {
-        type: Number,
-        require: true
-    },
-
     bonus: {
-        type: Number
+        numBon: {
+            type: Number
+        },
+        description: {
+            type: String
+        }
     },
 
     penality: {
-        type: Number
+        numPen: {
+            type: Number
+        },
+        description: {
+            type: String
+        }
     },
 
     lifeData: {
@@ -36,8 +41,9 @@ const BreedSchema = new mongoose.Schema({
         type: String
     },
     
-    language: {
-        type: String
+    mainLanguage: {
+        type: String,
+        require: true
     }
 });
 

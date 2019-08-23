@@ -10,7 +10,7 @@ const ClassSchema = new mongoose.Schema({
         type: String,
         require: true
     },
-    levalBase: [
+    levelBase: [
         {
             level: {
                 type: Number

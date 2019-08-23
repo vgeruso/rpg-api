@@ -13,36 +13,29 @@ describe('the user CRUD operations', () => {
 
     test('create User', async () => {
         const User = mongoose.model('User');
-        const user = await User.create({
+        await User.create({
             name: 'Victor',
             userName: 'Bollon',
             email: 'victor.geruso@gmail.com',
             password: 'açsldkjfiançclskdfaçoienm'
         });
-        
-        expect(user.name).toBe('Victor');
-        expect(user.userName).toBe('Bollon');
-        expect(user.email).toBe('victor.geruso@gmail.com');
-        expect(user.password).toBe('açsldkjfiançclskdfaçoienm');
     });
 
     test('find all users', async () => {
         const User = mongoose.model('User');
-        const user = await User.find();
-        _id = user[0]._id.toString();
-        const userLegth = user.length;
+        const users = await User.find();
+        _id = users[0]._id.toString();
+        const usersLegth = users.length;
 
-        expect(user[0].name).toBe('Victor');
-        expect(user[0].userName).toBe('Bollon');
-        expect(user[0].email).toBe('victor.geruso@gmail.com');
-        expect(user[0].password).toBe('açsldkjfiançclskdfaçoienm');
-        expect(userLegth).toBe(1);
+        console.log(users);
+        expect(usersLegth).toBe(1);
     });
 
     test('find user by id', async () => {
         const User = mongoose.model('User');
         const user = await User.findOne({ _id: _id });
 
+        console.log(user);
         expect(user.name).toBe('Victor');
         expect(user.userName).toBe('Bollon');
         expect(user.email).toBe('victor.geruso@gmail.com');
