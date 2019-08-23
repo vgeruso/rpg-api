@@ -16,7 +16,7 @@ const WisdomSchema = new mongoose.Schema({
     adjustment: {
         type: Number
     },
-    additionalDivineSpells: {
+    additionalDivineMagic: {
         type: String
     }
 });
