@@ -27,7 +27,6 @@ describe('the user CRUD operations', () => {
         _id = users[0]._id.toString();
         const usersLegth = users.length;
 
-        console.log(users);
         expect(usersLegth).toBe(1);
     });
 
@@ -35,11 +34,7 @@ describe('the user CRUD operations', () => {
         const User = mongoose.model('User');
         const user = await User.findOne({ _id: _id });
 
-        console.log(user);
         expect(user.name).toBe('Victor');
-        expect(user.userName).toBe('Bollon');
-        expect(user.email).toBe('victor.geruso@gmail.com');
-        expect(user.password).toBe('açsldkjfiançclskdfaçoienm');
     });
 
     test('update user by id', async () => {

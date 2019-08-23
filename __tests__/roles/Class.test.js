@@ -165,8 +165,7 @@ describe('the Class DRUD Operations', () => {
         const classFind = await Class.find();
         _id = classFind[0]._id.toString();
         const classLength = classFind.length;
-        
-        console.log(classFind);
+
         expect(classLength).toBe(1);
         expect(classFind[0].levelBase[19].level).toBe(20);
     });
@@ -174,17 +173,8 @@ describe('the Class DRUD Operations', () => {
     test('Find class by id', async () => {
         const Class = mongoose.model('Class');
         const classFindId = await Class.findOne({_id: _id});
-        
-        console.log(classFindId);
+
         expect(classFindId.name).toBe('Man of arms');
-    });
-
-    test('Update class by id', async () => {
-        const Class = mongoose.model('Class');
-        await Class.updateOne({_id: _id}, {name: 'Wizard'});
-        const classFindId = await Class.findOne({_id: _id});
-
-        expect(classFindId.name).toBe('Wizard');
     });
 
     test('Remove class by id', async () => {

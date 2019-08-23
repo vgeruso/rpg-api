@@ -36,7 +36,6 @@ describe('the breed CRUD operations', () => {
         _id = breed[0]._id.toString();
         const breedLength = breed.length;
 
-        console.log(breed);
         expect(breedLength).toBe(1);
     });
 
@@ -44,16 +43,7 @@ describe('the breed CRUD operations', () => {
         const Breed = mongoose.model('Breed');
         const breed = await Breed.findOne({ _id: _id });
 
-        console.log(breed);
         expect(breed.name).toBe('Dwarf');
-    });
-
-    test('Update breed by id', async () => {
-        const Breed = mongoose.model('Breed');
-        await Breed.updateOne({ _id: _id }, { name: 'Human' });
-        const breed = await Breed.findOne({_id: _id});
-
-        expect(breed.name).toBe('Human');
     });
 
     test('Remove breed by id', async () => {
