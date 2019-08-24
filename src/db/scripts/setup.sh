@@ -4,7 +4,7 @@ cd config
 touch database.js
 echo -e "const mongoose = require('mongoose');\n" >> database.js
 echo -e "module.exports = mongoose.connect(" >> database.js
-echo -e "   'mongodb://localhost:27017/rpg_dev_db'," >> database.js
+echo -e "   'mongodb+srv://rpg:p3GWunjc5vL0KYVe@rpgdb-lb7ko.mongodb.net/test?retryWrites=true&w=majority'," >> database.js
 echo -e "   {" >> database.js
 echo -e "       useNewUrlParser: true" >> database.js
 echo -e "   }" >> database.js
