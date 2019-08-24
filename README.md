@@ -35,4 +35,4 @@ Only run `yarn test` and all tests in the `__tests__/` diretory will be run.
 ## License
 
 Copirynght (c) 2019
-Licensed under the [MIT license](./LICENSE.md).
+Licensed under the [MIT license](LICENSE).
