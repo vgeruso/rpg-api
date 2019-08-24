@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+  - "10"
+before_install:
+  - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.17.3
+  - export PATH="$HOME/.yarn/bin:$PATH"
+  - yarn add nodemon -D
+  - yarn add jest -D
+  - yarn add body-parse
+  - yarn add dotenv
+  - yarn add express
+  - yarn add mongoose
+  - yarn add require-dir
+  - yarn setup
