@@ -5,20 +5,18 @@
 const mongoose = require('mongoose'); // Require for the dependecy of mongoose
 
 // Initialization of the Schema for the criation of model
-const SpellSchema = new mongoose.Schema({
-    /**
-     * The type of Spell
-     * There are two types:
-     * Arcane and Divine
-     * 
-     * Arcane: used by Wizards.
-     * Divine: used by clagyman.
-     */
+const MagicSchema = new mongoose.Schema({
+    name: {
+        type: String
+    },
     type: {
         type: String
     },
+    description: {
+        type: String
+    },
     duration: {
-        type: Number
+        type: String
     },
     damage: {
         type: Number
@@ -29,4 +27,4 @@ const SpellSchema = new mongoose.Schema({
 });
 
 // Creation of the model
-mongoose.model('Spell', SpellSchema);
+mongoose.model('Magic', MagicSchema);

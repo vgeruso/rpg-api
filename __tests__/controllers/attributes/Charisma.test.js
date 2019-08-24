@@ -5,10 +5,10 @@ describe('the charisma CRUD operations', () => {
     beforeAll(() => {
         const dotEnv = require('dotenv');
         dotEnv.config({
-            path: process.env.NODE_ENV = "test" ? ".ent.test" : ".env"
+            path: process.env.NODE_ENV = "test" ? ".env.test" : ".env"
         });
-        require('../../src/db/config/database.js');
-        require('../../src/models/attributes/Charisma');
+        require('../../../src/db/config/database.js');
+        require('../../../src/models/attributes/Charisma');
     });
 
     test('create charisma', async () => {

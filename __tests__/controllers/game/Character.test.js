@@ -7,8 +7,8 @@ describe('the character CRUD operations', () => {
         dotEnv.config({
             path: process.env.NODE_ENV === "test" ? ".env.test" : ".env"
         });
-        require('../../src/db/config/database.js');
-        require('../../src/models/game/Character');
+        require('../../../src/db/config/database.js');
+        require('../../../src/models/game/Character');
     });
 
     test('test run', () => {

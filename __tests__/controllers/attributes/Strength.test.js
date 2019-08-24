@@ -7,8 +7,8 @@ describe('the Strength CRUD operation', () => {
         dotEnv.config({
             path: process.env.NODE_ENV = "test" ? ".env.test" : ".env"
         });
-        require('../../src/db/config/database.js');
-        require('../../src/models/attributes/Strength');
+        require('../../../src/db/config/database.js');
+        require('../../../src/models/attributes/Strength');
     });
 
     test('create Strength', async () => {

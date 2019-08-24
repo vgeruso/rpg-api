@@ -1,15 +1,12 @@
 /**
- * This is the model for the storage in "Equipment" Collection in MongoDB.
+ * This is the model for the storage in "Defense Items" Collection in MongoDB.
  * @author Victor Geruso
  */
 const mongoose = require('mongoose'); // Require for the dependency of mongoose
 
 // Initialization of the Schema for the criation of model
-const EquipmentSchema = new mongoose.Schema({
+const DefenseItemSchema = new mongoose.Schema({
     item: {
-        type: String
-    },
-    description: {
         type: String
     },
     /**
@@ -19,7 +16,7 @@ const EquipmentSchema = new mongoose.Schema({
      * This property is used for the calculate of armor class.
      */
     defenseBonus: {
-        type: String
+        type: Number
     },
     /**
      * Rdution Moviment that the item can cause in character.
@@ -37,4 +34,4 @@ const EquipmentSchema = new mongoose.Schema({
 });
 
 // Creation of the model
-mongoose.model('Equipment', EquipmentSchema);
+mongoose.model('DefenseItem', DefenseItemSchema);

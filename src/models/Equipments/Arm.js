@@ -5,8 +5,8 @@
 const mongoose = require('mongoose'); // Require for the dependecy of mongoose.
 
 // Initialization of the Schema for the criation of model
-const WeaponSchema = new mongoose.Schema({
-    weapon: {
+const ArmSchema = new mongoose.Schema({
+    arm: {
         type: String
     },
     size: {
@@ -30,4 +30,4 @@ const WeaponSchema = new mongoose.Schema({
 });
 
 // Creation of the model
-mongoose.model('Weapon', WeaponSchema);
+mongoose.model('Arm', ArmSchema);

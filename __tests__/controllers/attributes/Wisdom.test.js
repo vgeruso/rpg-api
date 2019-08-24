@@ -7,8 +7,8 @@ describe('the Wisdom CRUD operations', () => {
         dotEnv.config({
             path: process.env.NODE_ENV = "test" ? ".env.test" : ".env"
         });
-        require('../../src/db/config/database.js');
-        require('../../src/models/attributes/Wisdom');
+        require('../../../src/db/config/database.js');
+        require('../../../src/models/attributes/Wisdom');
     });
 
     test('Create Wisdom', async () => {

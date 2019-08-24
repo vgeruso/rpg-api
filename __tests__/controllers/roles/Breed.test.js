@@ -7,8 +7,8 @@ describe('the breed CRUD operations', () => {
         dotEnv.config({
             path: process.env.NODE_ENV === "test" ? ".env.test" : ".env"
         });
-        require('../../src/db/config/database.js');
-        require('../../src/models/roles/Breed');
+        require('../../../src/db/config/database.js');
+        require('../../../src/models/roles/Breed');
     });
 
     test('Create Breed', async () => {
