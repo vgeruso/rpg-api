@@ -2,7 +2,7 @@
  * This is the model for the storage in "Constituition" in MongoDB.
  * @author Victor Geruso
  */
-const mongoose = require('mongoose') // Require for the dependecy of mongoose
+const mongoose = require('mongoose'); // Require for the dependecy of mongoose
 
 // Initialization of the Schema for the criation of model
 const ConstituitionSchema = new mongoose.Schema({
@@ -19,7 +19,7 @@ const ConstituitionSchema = new mongoose.Schema({
     chanceResurrection: {
         type: Number
     }
-})
+});
 
 // Creation of the model
-mongoose.model('Constituition', ConstituitionSchema)
+mongoose.model('Constituition', ConstituitionSchema);

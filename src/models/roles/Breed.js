@@ -2,7 +2,7 @@
  * This is the model for the storage in "Breed" collection in MongoDB.
  * @author Victor Geruso
  */
- const mongoose = require('mongoose') // Require for the dependecy of mongoose.
+ const mongoose = require('mongoose'); // Require for the dependecy of mongoose.
 
 // Initialization of the Schema for the criation of model
 const BreedSchema = new mongoose.Schema({
@@ -10,29 +10,42 @@ const BreedSchema = new mongoose.Schema({
         type: String,
         require: true
     },
-    Adjustment: {
-        type: Number,
-        require: true
-    },
+
     bonus: {
-        type: Number
+        numBon: {
+            type: Number
+        },
+        description: {
+            type: String
+        }
     },
+
     penality: {
-        type: Number
+        numPen: {
+            type: Number
+        },
+        description: {
+            type: String
+        }
     },
+
     lifeData: {
         type: String
     },
+
     movimentation: {
         type: Number
     },
+
     vision: {
         type: String
     },
-    language: {
-        type: String
+    
+    mainLanguage: {
+        type: String,
+        require: true
     }
-})
+});
 
 // Creation of the model
-mongoose.model('Breed', BreedSchema)
+mongoose.model('Breed', BreedSchema);
