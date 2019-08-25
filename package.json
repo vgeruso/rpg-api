@@ -1,0 +1,26 @@
+{
+  "name": "rpg-api",
+  "version": "1.0.0",
+  "description": "Api for the game RPG for platform web and mobile",
+  "main": "server.js",
+  "repository": "git@github.com:table-rpg/rpg-api.git",
+  "author": "VictorGeruso <victor.geruso@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js --ignore __tests__",
+    "setup": "cd src/db/scripts/ && bash setup.sh",
+    "test": "NODE_ENV=test jest"
+  },
+  "dependencies": {
+    "body-parse": "^0.1.0",
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.6.4",
+    "require-dir": "^1.2.0"
+  },
+  "devDependencies": {
+    "jest": "^24.9.0",
+    "nodemon": "^1.19.1"
+  }
+}
