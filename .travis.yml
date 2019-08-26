@@ -17,7 +17,8 @@ before_script:
   - image="mongo:$VERSION${VARIANT:+$(basename "$VARIANT")}"
 script:
   - |
-      docker run --rm "$image" mongod --version
-      docker run --rm "$image" mongo --version
+    docker build -t "$image" .
+    docker run --rm "$image" mongod --version
+    docker run --rm "$image" mongo --version
 after_script:
   - docker images
