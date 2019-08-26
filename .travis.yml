@@ -15,5 +15,9 @@ before_script:
   - env | sort
   - cd "$VERSION${VARIANT:+/$VARIANT}"
   - image="mongo:$VERSION${VARIANT:+$(basename "$VARIANT")}"
+script:
+  - |
+      docker run --rm "$image" mongod --version
+      docker run --rm "$image" mongo --version
 after_script:
   - docker images
