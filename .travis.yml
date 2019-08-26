@@ -1,10 +1,29 @@
+sudo: required
+
 language: node_js
+
 node_js:
-  - "10"
+  - 8
+  - 10
+  - 12
+
+env:
+  matrix:
+    - MONGODB=3.2
+    - MONGODB=3.4
+    - MONGODB=3.6
+    - MONGODB=4.0
+
 services:
-  - mongodb
-before_install:
+  - docker
+
+before_script:
+  - docker run -d -p 27017:27017 mongo:$MONGODB
+  - docker ps -a
+
+script:
   - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.17.3
   - export PATH="$HOME/.yarn/bin:$PATH"
   - yarn install
   - yarn setup
+  - yarn test
