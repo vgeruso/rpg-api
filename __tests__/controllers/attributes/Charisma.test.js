@@ -8,7 +8,7 @@ describe('the charisma CRUD operations', () => {
             path: process.env.NODE_ENV = "test" ? ".env.test" : ".env"
         });
         require('../../../src/db/config/database.js');
-        require('../../../src/models/attributes/Charisma');
+        require('../../../src/app/models/attributes/Charisma');
     });
 
     test('create charisma', async () => {

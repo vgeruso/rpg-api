@@ -17,14 +17,14 @@ class AppController {
     middleware() {
         this.express.use(express.json());
         require('./db/config/database.js');
-        requireDir('./models/game');
-        requireDir('./models/attributes');
-        requireDir('./models/items');
-        requireDir('./models/roles');
+        requireDir('./app/models/game');
+        requireDir('./app/models/attributes');
+        requireDir('./app/models/equipments');
+        requireDir('./app/models/roles');
     }
 
     route() {
-        this.express.use('/api', require('./routes'));
+        this.express.use('/api', require('./app/routes'));
     }
 }
 

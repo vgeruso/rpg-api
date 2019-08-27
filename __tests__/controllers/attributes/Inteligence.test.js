@@ -8,7 +8,7 @@ describe('the Inteligence CRUD operation', () => {
             path: process.env.NODE_ENV = "test" ? ".env.test" : ".env"
         });
         require('../../../src/db/config/database.js');
-        require('../../../src/models/attributes/Intelligence');
+        require('../../../src/app/models/attributes/Intelligence');
     });
     
     test('Create Inteligence', async () => {

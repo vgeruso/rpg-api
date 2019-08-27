@@ -8,7 +8,7 @@ describe('the Class DRUD Operations', () => {
             path: process.env.NODE_ENV === "test" ? ".env.test" : ".env"
         });
         require('../../../src/db/config/database.js');
-        require('../../../src/models/roles/Class');
+        require('../../../src/app/models/roles/Class');
     });
 
     test('create Class', async () => {

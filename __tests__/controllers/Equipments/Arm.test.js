@@ -8,7 +8,7 @@ describe('the Arm CRUD operations', () => {
             path: process.env.NODE_ENV = "test" ? ".env.test" : ".env"
         });
         require('../../../src/db/config/database.js');
-        require('../../../src/models/Equipments/Arm');
+        require('../../../src/app/models/equipments/Arm');
     });
 
     test('create Arm', async () => {
