@@ -17,12 +17,12 @@ const CharacterSchema = new mongoose.Schema({
     },
 
     breed: {
-        type: String,
+        type: ObjectId,
         required: true
     },
 
     class: {
-        type: String,
+        type: ObjectId,
         required: true
     },
     
@@ -46,37 +46,38 @@ const CharacterSchema = new mongoose.Schema({
         default: false
     },
     
-    attributes: [
-        {
-            type: ObjectId,
-            ref: 'Strength'
-        },
-        {
-            type: ObjectId,
-            ref: 'Intelligence'
-        },
-        {
-            type: ObjectId,
-            ref: 'Wisdom'
-        },
-        {
-            type: ObjectId,
-            ref: 'Dexterity'
-        },
-        {
-            type: ObjectId,
-            ref: 'Constituition'
-        },
-        {
-            type: ObjectId,
-            ref: 'Charisma'
-        }
-    ],
+    attributes: {
+            Strength: {
+                type: ObjectId,
+                ref: 'Strength'
+            },
+            Intelligence: {
+                type: ObjectId,
+                ref: 'Intelligence'
+            },
+            Wisdom: {
+                type: ObjectId,
+                ref: 'Wisdom'
+            },
+            Dexterity: {
+                type: ObjectId,
+                ref: 'Dexterity'
+            },
+            Constituition: {
+                type: ObjectId,
+                ref: 'Constituition'
+            },
+            Charisma: {
+                type: ObjectId,
+                ref: 'Charisma'
+            }
+    },
     
     subAttributes: {
         
         lifePoints: {
-            type: Number
+            type: Number,
+            require: true
         },
         
         attackBonus: {
@@ -122,7 +123,7 @@ const CharacterSchema = new mongoose.Schema({
         }
     ],
     
-    expelUndead: [
+    kickOutUndead: [
         {
             type: String
         }
