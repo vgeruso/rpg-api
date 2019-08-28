@@ -1,0 +1,23 @@
+const mongoose = require('mongoose');
+require('../../models/roles/Class');
+
+const Class = mongoose.model('Class');
+
+module.exports = {
+    async store (req, res) {
+        const json = req.body;
+        const newClass = await Class.create(json);
+        return res.json(newClass);
+    },
+
+    async index (req, res) {
+        const classes = await Class.find();
+        return res.json(classes);
+    },
+
+    async show (req, res) {
+        const _id = req.params.id;
+        const classFinded = await Class.findOne({ _id: _id });
+        return res.json(classFinded);
+    }
+};
