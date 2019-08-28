@@ -22,11 +22,11 @@ describe('the Dexterity CRUD operations', () => {
         });
     });
 
-    test('Find all dexteritys', async () => {
+    test('Find all dexterities', async () => {
         const Dexterity = mongoose.model('Dexterity');
         const dexterities = await Dexterity.find();
         _id = dexterities[0]._id.toString();
-        const dexteritiesLength = dexteritys.length;
+        const dexteritiesLength = dexterities.length;
 
         expect(dexteritiesLength).toBe(1);
     });
