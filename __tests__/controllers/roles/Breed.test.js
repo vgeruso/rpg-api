@@ -60,6 +60,20 @@ describe('the breed CRUD operations', () => {
         expect(status).toBe('Dwarf');
     });
 
+    test('Find breed by id', async () => {
+        const Breed = mongoose.model('Breed');
+        const breed = await Breed.findOne({ _id: '5d7ad9e2f18d7e2b1951af7e' });
+
+        let status = '';
+        if(breed === null) {
+            status = 'Breed not found';
+        } else {
+            status = breed.name;
+        }
+
+        expect(status).toBe('Breed not found');
+    });
+
     afterAll(async () => {
         const Breed = mongoose.model('Breed');
         await Breed.deleteOne({_id: _id});

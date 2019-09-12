@@ -166,25 +166,48 @@ describe('the Class DRUD Operations', () => {
         _id = classFind[0]._id.toString();
         const classLength = classFind.length;
 
-        expect(classLength).toBe(1);
-        expect(classFind[0].levelBase[19].level).toBe(20);
+        let status = '';
+        if(classLength == 0) {
+            status = 'No registred Classes';
+        } else {
+            status = classFind[0].name;
+        }
+
+        expect(status).toBe('Man of arms');
     });
 
     test('Find class by id', async () => {
         const Class = mongoose.model('Class');
         const classFindId = await Class.findOne({_id: _id});
 
-        expect(classFindId.name).toBe('Man of arms');
+        let status = '';
+        if(classFindId === null) {
+            status = 'Class not find'
+        } else {
+            status = classFindId.name;
+        }
+
+        expect(status).toBe('Man of arms');
     });
 
-    test('Remove class by id', async () => {
+    test('Find class by id', async () => {
         const Class = mongoose.model('Class');
-        const del = await Class.deleteOne({_id: _id});
+        const classFindId = await Class.findOne({_id: '5d7acee5a7a28c1f58349510' });
 
-        expect(del.deletedCount).not.toBeFalsy();
+        let status = '';
+        if(classFindId === null) {
+            status = 'Class not find';
+        } else {
+            status = classFindId.name;
+        }
+
+        expect(status).toBe('Class not find');
     });
 
-    afterAll(() => {
+    afterAll(async () => {
+        const Class = mongoose.model('Class');
+        await Class.deleteOne({_id: _id});
+
         mongoose.disconnect();
     });
 });
