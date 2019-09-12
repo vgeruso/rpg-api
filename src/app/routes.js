@@ -17,6 +17,8 @@ routes.put('/user/:id', User.update);
 routes.delete('/user/:id', User.destroy);
 
 //Breed
-
+routes.post('/breed', Breed.store);
+routes.get('/breeds', Breed.index);
+routes.get('/breed/:id', Breed.show);
 
 module.exports = routes;

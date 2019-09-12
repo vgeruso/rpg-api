@@ -32,28 +32,38 @@ describe('the breed CRUD operations', () => {
 
     test('Find all breeds', async () => {
         const Breed =  mongoose.model('Breed');
-        const breed = await Breed.find();
-        _id = breed[0]._id.toString();
-        const breedLength = breed.length;
+        const breeds = await Breed.find();
+        _id = breeds[0]._id.toString();
+        const breedsLength = breeds.length;
 
-        expect(breedLength).toBe(1);
+        let status = '';
+        if(breedsLength == 0) {
+            status = 'No registred breeds';
+        } else {
+            status = breeds[0].name;
+        }
+
+        expect(status).toBe('Dwarf');
     });
 
     test('Find breed by id', async () => {
         const Breed = mongoose.model('Breed');
         const breed = await Breed.findOne({ _id: _id });
 
-        expect(breed.name).toBe('Dwarf');
+        let status = '';
+        if(breed === null) {
+            status = 'Breed not found';
+        } else {
+            status = breed.name;
+        }
+
+        expect(status).toBe('Dwarf');
     });
 
-    test('Remove breed by id', async () => {
+    afterAll(async () => {
         const Breed = mongoose.model('Breed');
-        const del = await Breed.deleteOne({_id: _id});
+        await Breed.deleteOne({_id: _id});
 
-        expect(del.deletedCount).not.toBeFalsy();
-    });
-
-    afterAll(() => {
         mongoose.disconnect();
     });
 });
