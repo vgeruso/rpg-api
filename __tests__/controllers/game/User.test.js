@@ -27,14 +27,42 @@ describe('the user CRUD operations', () => {
         _id = users[0]._id.toString();
         const usersLegth = users.length;
 
-        expect(usersLegth).toBe(1);
+        let status = '';
+        if(usersLegth == 0) {
+            status = 'no registred users';
+        } else {
+            status = users[0].name;
+        }
+
+        expect(status).toBe('Victor');
     });
 
     test('find user by id', async () => {
         const User = mongoose.model('User');
         const user = await User.findOne({ _id: _id });
 
-        expect(user.name).toBe('Victor');
+        let status = '';
+        if(user == null) {
+            status = 'User not found';
+        } else {
+            status = user.name;
+        }
+
+        expect(status).toBe('Victor');
+    });
+
+    test('find user by id => user not found', async () => {
+        const User = mongoose.model('User');
+        const user = await User.findOne({ _id: '5d7a70611f33cc29b63902d1' });
+
+        let status = '';
+        if(user == null) {
+            status = 'User not found';
+        } else {
+            status = user.name;
+        }
+
+        expect(status).toBe('User not found');
     });
 
     test('update user by id', async () => {
@@ -42,14 +70,57 @@ describe('the user CRUD operations', () => {
         await User.updateOne({ _id: _id }, { name: 'Victor Geruso' });
         const user = await User.findOne({ _id : _id });
 
-        expect(user.name).toBe('Victor Geruso');
+        let status = '';
+        if(user == null) {
+            status = 'User not found';
+        } else {
+            status = user.name;
+        }
+
+        expect(status).toBe('Victor Geruso');
     });
+
+    test('update user by id => user not found', async () => {
+        const User = mongoose.model('User');
+        await User.updateOne({ _id: '5d7a70611f33cc29b63902d1' }, { name: 'Victor Geruso' })
+        const user = await User.findOne({ _id: '5d7a70611f33cc29b63902d1' });
+
+        let status = '';
+        if(user == null) {
+            status = 'User not found';
+        } else {
+            status = user.name;
+        }
+
+        expect(status).toBe('User not found');
+    })
 
     test('remove user by id', async () => {
         const User = mongoose.model('User');
         const del = await User.deleteOne({ _id: _id });
         
-        expect(del.deletedCount).not.toBeFalsy();
+        let status = '';
+        if(del.deletedCount == false) {
+            status = 'User not found';
+        } else {
+            status = 'User deleted'
+        }
+
+        expect(status).toBe('User deleted');
+    });
+
+    test('remove user by id => User not found', async () => {
+        const User = mongoose.model('User');
+        const del = await User.deleteOne({ _id: '5d7a70611f33cc29b63902d1' });
+        
+        let status = '';
+        if(del.deletedCount == false) {
+            status = 'User not found';
+        } else {
+            status = 'User deleted'
+        }
+
+        expect(status).toBe('User not found');
     });
 
     afterAll(() => {
