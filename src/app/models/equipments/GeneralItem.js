@@ -17,6 +17,8 @@ const GeneralItemScheme = new mongoose.Schema({
     weight: {
         type: Number
     }
+}, {
+    timestamps: true
 });
 
 mongoose.model('GeneralItem', GeneralItemScheme);
