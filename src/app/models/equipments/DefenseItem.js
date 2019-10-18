@@ -9,19 +9,9 @@ const DefenseItemSchema = new mongoose.Schema({
     item: {
         type: String
     },
-    /**
-     * Defense bonus of item
-     * for defense items
-     * 
-     * This property is used for the calculate of armor class.
-     */
     defenseBonus: {
         type: Number
     },
-    /**
-     * Rdution Moviment that the item can cause in character.
-     * for defense items.
-     */
     reductionMov: {
         type: Number
     },
@@ -31,6 +21,8 @@ const DefenseItemSchema = new mongoose.Schema({
     weight: {
         type: Number
     }
+}, {
+    timestamps: true
 });
 
 // Creation of the model
