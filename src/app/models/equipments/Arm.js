@@ -27,6 +27,8 @@ const ArmSchema = new mongoose.Schema({
     weight: {
         type: Number
     }
+}, {
+    timestamps: true
 });
 
 // Creation of the model
