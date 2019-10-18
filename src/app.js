@@ -21,6 +21,7 @@ class AppController {
         requireDir('./app/models/attributes');
         requireDir('./app/models/equipments');
         requireDir('./app/models/roles');
+        requireDir('./app/models/skills');
     }
 
     route() {

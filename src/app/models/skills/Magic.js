@@ -19,11 +19,13 @@ const MagicSchema = new mongoose.Schema({
         type: String
     },
     damage: {
-        type: Number
+        type: String
     },
     reach: {
         type: Number
     }
+}, {
+    timestamps: true
 });
 
 // Creation of the model
