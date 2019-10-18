@@ -29,6 +29,8 @@ const ClassSchema = new mongoose.Schema({
             }
         }
     ]
+}, {
+    timestamps: true
 });
 
 // Creation of the model

@@ -14,7 +14,7 @@ module.exports = {
         const classes = await Class.find();
 
         if(classes.length == 0) {
-            return res.send('No registred Classes');
+            return res.status(404).send('No registred Classes');
         }
 
         return res.json(classes);
@@ -29,5 +29,24 @@ module.exports = {
         }
 
         return res.json(classFinded);
+    },
+
+    async update (req, res) {
+        const _id = req.params.id;
+        const json = req.body;
+        const classUpdated = await Class.updateOne({ _id: _id }, json);
+        if(classUpdated.n === 0) {
+            return res.status(404).send('Class not found');
+        }
+        return res.send('User modified');
+    },
+
+    async destroy (req, res) {
+        const _id = req.params.id;
+        const del = await Class.deleteOne({_id: _id});
+        if(del.n === 0) {
+            return res.status(404).send('Class not found');
+        }
+        return res.send('sucessfully removed');
     }
 };

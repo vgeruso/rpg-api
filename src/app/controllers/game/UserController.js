@@ -13,7 +13,7 @@ module.exports = {
     async index (req, res) {
         const users = await User.find();
         if (users.length === 0) {
-            return res.send('No registred users');
+            return res.status(404).send('No registred users');
         }
         return res.json(users);
     },

@@ -45,6 +45,8 @@ const BreedSchema = new mongoose.Schema({
         type: String,
         require: true
     }
+}, {
+    timestamps: true
 });
 
 // Creation of the model

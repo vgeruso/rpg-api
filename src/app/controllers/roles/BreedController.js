@@ -14,7 +14,7 @@ module.exports = {
         const breeds = await Breed.find();
 
         if(breeds.length == 0) {
-            return res.send('No registred breeds');
+            return res.status(404).send('No registred breeds');
         }
 
         return res.json(breeds);
@@ -30,4 +30,25 @@ module.exports = {
 
         return res.json(breed);
     },
+
+    async update (req, res) {
+        const _id = req.params.id;
+        const json = req.body;
+        const breedUpdated = await Breed.updateOne({ _id: _id }, json);
+        if(breedUpdated.n === 0) {
+            return res.status(404).send('Breed not found');
+        }
+
+        return res.send('Breed modified');
+    },
+
+    async destroy (req, res) {
+        const _id = req.params.id;
+        const del = await Breed.deleteOne({ _id: _id });
+        if(del.n === 0) {
+            return res.status(404).send('Breed not found');
+        }
+
+        return res.send('sucessfully removed');
+    }
 };

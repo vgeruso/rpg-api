@@ -29,6 +29,8 @@ const UserSchema = new mongoose.Schema({
             ref: 'Character'
         }
     ]
+}, {
+    timestamps: true
 });
 
 // Creation of the model
