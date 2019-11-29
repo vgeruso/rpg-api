@@ -3,15 +3,10 @@ sudo: required
 language: node_js
 
 node_js:
-  - 8
-  - 10
   - 12
 
 env:
   matrix:
-    - MONGODB=3.2
-    - MONGODB=3.4
-    - MONGODB=3.6
     - MONGODB=4.0
 
 services:
