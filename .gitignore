@@ -62,3 +62,7 @@ config/
 
 # Xls Dyretory
 xls/
+
+# sonarqube
+.scannerwork/
+sonar-project.properties
