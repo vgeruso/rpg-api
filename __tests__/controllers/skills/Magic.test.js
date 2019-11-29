@@ -8,7 +8,7 @@ describe('the Magic CRUD operations', () => {
             path: process.env.NODE_ENV = "test" ? ".env.test" : ".env"
         });
         require('../../../src/db/config/database.js');
-        require('../../../src/app/models/equipments/Magic');
+        require('../../../src/app/models/skills/Magic');
     });
 
     test('create Magic', async () => {

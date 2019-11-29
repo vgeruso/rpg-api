@@ -1,126 +1,113 @@
-describe('the user CRUD operations', () => {
-    const mongoose = require('mongoose');
-    let _id;
+const faker = require('faker');
+require('jest');
 
+describe('the user CRUD operations', () => {
+    let UserService;
+    let body;
+    
     beforeAll(() => {
+        UserService = require('../../../src/app/services/game/UserService');
         const dotEnv = require('dotenv');
         dotEnv.config({
             path: process.env.NODE_ENV === "test" ? ".env.test" : ".env"
         });
         require('../../../src/db/config/database.js');
-        require('../../../src/app/models/game/User');
     });
 
-    test('create User', async () => {
-        const User = mongoose.model('User');
-        await User.create({
-            name: 'Victor',
-            userName: 'Bollon',
-            email: 'victor.geruso@gmail.com',
-            password: 'açsldkjfiançclskdfaçoienm'
-        });
+    test('create user', async () => {
+        const name = faker.name.findName();
+        body = {
+            name,
+            userName: faker.internet.userName(name),
+            email: faker.internet.email(name),
+            password: faker.internet.password()
+        }
+        const userCreated = await UserService.create(body);
+
+        expect(userCreated).toEqual(
+            expect.objectContaining(body)
+        );
+    });
+
+    test('create user (userName used)', async () => {
+        const expectMessage = 'Username is already used';
+        const userCreated = await UserService.create(body);
+        
+        expect(userCreated).toEqual(expectMessage);
     });
 
     test('find all users', async () => {
-        const User = mongoose.model('User');
-        const users = await User.find();
-        _id = users[0]._id.toString();
-        const usersLegth = users.length;
+        const allUsers = await UserService.findAllUsers();
 
-        let status = '';
-        if(usersLegth == 0) {
-            status = 'no registred users';
-        } else {
-            status = users[0].name;
-        }
-
-        expect(status).toBe('Victor');
+        expect([]).not.toEqual(
+            expect.arrayContaining(allUsers)
+        );
     });
 
-    test('find user by id', async () => {
-        const User = mongoose.model('User');
-        const user = await User.findOne({ _id: _id });
+    test('find user by userName', async () => {
+        const user = await UserService.findByUserName(body.userName);
 
-        let status = '';
-        if(user == null) {
-            status = 'User not found';
-        } else {
-            status = user.name;
-        }
-
-        expect(status).toBe('Victor');
+        expect(user).toEqual(
+            expect.objectContaining(body)
+        );
     });
 
-    test('find user by id => user not found', async () => {
-        const User = mongoose.model('User');
-        const user = await User.findOne({ _id: '5d7a70611f33cc29b63902d1' });
+    test('find user by userName (user Not Found)', async () => {
+        const expectMessage = 'User not found';
 
-        let status = '';
-        if(user == null) {
-            status = 'User not found';
-        } else {
-            status = user.name;
-        }
+        const user = await UserService.findByUserName('Carlito1997');
 
-        expect(status).toBe('User not found');
+        expect(user).toEqual(expectMessage);
     });
 
-    test('update user by id', async () => {
-        const User = mongoose.model('User');
-        await User.updateOne({ _id: _id }, { name: 'Victor Geruso' });
-        const user = await User.findOne({ _id : _id });
+    test('update user by userName', async () => {
+        const name = faker.name.findName();
+        const json = {
+            name,
+            userName: faker.internet.userName(name),
+            email: faker.internet.email(name)
+        };
 
-        let status = '';
-        if(user == null) {
-            status = 'User not found';
-        } else {
-            status = user.name;
-        }
+        const expectMessage = 'User modfied';
 
-        expect(status).toBe('Victor Geruso');
+        const user = await UserService.updateUserByUserName(body.userName, json);
+
+        body.name = name;
+        body.userName = json.userName;
+        body.email = json.email;
+
+        expect(user).toEqual(expectMessage);
     });
 
-    test('update user by id => user not found', async () => {
-        const User = mongoose.model('User');
-        await User.updateOne({ _id: '5d7a70611f33cc29b63902d1' }, { name: 'Victor Geruso' })
-        const user = await User.findOne({ _id: '5d7a70611f33cc29b63902d1' });
+    test('update user by userName (user not found)', async () => {
+        const name = faker.name.findName();
+        const json = {
+            name,
+            userName: faker.internet.userName(name),
+            email: faker.internet.email(name)
+        };
 
-        let status = '';
-        if(user == null) {
-            status = 'User not found';
-        } else {
-            status = user.name;
-        }
+        const expectMessage = 'User not found';
 
-        expect(status).toBe('User not found');
-    })
+        const user = await UserService.updateUserByUserName('Carlito1997', json);
 
-    test('remove user by id', async () => {
-        const User = mongoose.model('User');
-        const del = await User.deleteOne({ _id: _id });
-        
-        let status = '';
-        if(del.deletedCount == false) {
-            status = 'User not found';
-        } else {
-            status = 'User deleted'
-        }
-
-        expect(status).toBe('User deleted');
+        expect(user).toEqual(expectMessage);
     });
 
-    test('remove user by id => User not found', async () => {
-        const User = mongoose.model('User');
-        const del = await User.deleteOne({ _id: '5d7a70611f33cc29b63902d1' });
-        
-        let status = '';
-        if(del.deletedCount == false) {
-            status = 'User not found';
-        } else {
-            status = 'User deleted'
-        }
+    test('remove user by userName', async () => {
+        const expectMessage = 'User removed';
 
-        expect(status).toBe('User not found');
+        const user = await UserService.removeUserByUserName(body.userName);
+
+        expect(user).toEqual(expectMessage);
+    });
+
+    test('remove user by userName (User not found)', async () => {
+        const expectMessage = 'User not found';
+
+        const user = await UserService.removeUserByUserName('Carlito1997');
+
+        expect(user).toEqual(expectMessage);
     });
 
     afterAll(() => {

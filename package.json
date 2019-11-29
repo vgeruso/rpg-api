@@ -10,7 +10,8 @@
     "start": "node src/server.js",
     "dev": "nodemon src/server.js --ignore __tests__",
     "setup": "cd src/db/scripts/ && bash setup.sh",
-    "test": "NODE_ENV=test jest"
+    "test": "NODE_ENV=test jest --watch",
+    "coverage": "NODE_ENV=test jest --coverage"
   },
   "dependencies": {
     "body-parse": "^0.1.0",
@@ -20,6 +21,7 @@
     "require-dir": "^1.2.0"
   },
   "devDependencies": {
+    "faker": "^4.1.0",
     "jest": "^24.9.0",
     "nodemon": "^1.19.1"
   }

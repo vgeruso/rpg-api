@@ -1,48 +1,53 @@
-const mongoose = require('mongoose');
-require('../../models/game/User');
-
-const User = mongoose.model('User')
+const UserService = require('../../services/game/UserService');
 
 module.exports = {
     async store (req, res) {
         const json = req.body;
-        const user = await User.create(json);
-        return res.json(user);
+        const user = await UserService.create(json);
+        
+        if(user === 'Username is already used') {
+            return res.status(422).json({message: user});
+        }
+
+        return res.status(201).json(user);
     },
 
     async index (req, res) {
-        const users = await User.find();
-        if (users.length === 0) {
-            return res.status(404).send('No registred users');
+        const users = await UserService.findAllUsers();
+        if (users === 'No registred users') {
+            return res.status(404).json({message: users});
         }
-        return res.json(users);
+        return res.status(200).json(users);
     },
 
     async show (req, res) {
-        const _id = req.params.id;
-        const user = await User.findOne({ _id: _id });
-        if (user == null) {
-            return res.status(404).send('User not found');
+        const userName = req.params.userName;
+        const user = await UserService.findByUserName(userName);
+
+        if (user === 'User not found') {
+            return res.status(404).send({message: user});
         }
-        return res.json(user);
+        return res.status(200).json(user);
     },
 
     async update (req, res) {
-        const _id = req.params.id;
+        const userName = req.params.userName;
         const json = req.body;
-        const userUpdated = await User.updateOne({ _id: _id }, json);
-        if(userUpdated.n === 0) {
-            return res.status(404).send('User not found');
+        const userUpdated = await UserService.updateUserByUserName(userName, json);
+        if(userUpdated === 'User not found') {
+            return res.status(404).send({message: userUpdated});
+        } else if (userUpdated === 'Modified error') {
+            return res.status(500).send({message: userUpdated});
         }
-        return res.send('User modified');
+        return res.status(200).json({message: userUpdated});
     },
 
     async destroy (req, res) {
-        const _id = req.params.id;
-        const del = await User.deleteOne({ _id: _id });
-        if(del.n === 0) {
-            return res.status(404).send('User not found');
+        const userName = req.params.userName;
+        const del = await UserService.removeUserByUserName(userName);
+        if(del === 'User not found') {
+            return res.status(404).json({message: del});
         }
-        return res.send('sucessfully removed');
+        return res.status(200).json({message: del});
     }
 };

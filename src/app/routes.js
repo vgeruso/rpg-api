@@ -15,9 +15,9 @@ const Magic = require('./controllers/skills/MagicController');
 // Users
 routes.post('/user', User.store);
 routes.get('/users', User.index);
-routes.get('/user/:id', User.show);
-routes.put('/user/:id', User.update);
-routes.delete('/user/:id', User.destroy);
+routes.get('/user/:userName', User.show);
+routes.put('/user/:userName', User.update);
+routes.delete('/user/:userName', User.destroy);
 
 // Roles
 // Class
